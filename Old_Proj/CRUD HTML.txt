@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD com JavaScript</title>
+</head>
+<body>
+    <h1>CRUD com JavaScript</h1>
+    <div id="crud-container">
+    </div>
+    <button id="add-btn">Adicionar</button>
+    <script>
+        let data = [
+            { id: 1, name: "Item 1" },
+            { id: 2, name: "Item 2" },
+            { id: 3, name: "Item 3" },
+        ];
+
+        function renderData() {
+            const container = document.getElementById("crud-container");
+            container.innerHTML = "";
+            data.forEach((item) => {
+                const div = document.createElement("div");
+                div.innerHTML = `
+                    <p>ID: ${item.id}, Name: ${item.name}</p>
+                    <button onclick="editItem(${item.id})">Editar</button>
+                    <button onclick="deleteItem(${item.id})">Excluir</button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function editItem(id) {
+            const newName = prompt("Digite o novo nome:");
+            const item = data.find((item) => item.id === id);
+            if (item) {
+                item.name = newName;
+                renderData();
+            }
+        }
+
+        function deleteItem(id) {
+            data = data.filter((item) => item.id !== id);
+            renderData();
+        }
+
+        document.getElementById("add-btn").addEventListener("click", () => {
+            const newName = prompt("Digite o nome do novo item:");
+            const newId = data.length > 0 ? data[data.length - 1].id + 1 : 1;
+            data.push({ id: newId, name: newName });
+            renderData();
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            renderData();
+        });
+    </script>
+</body>
+</html>
