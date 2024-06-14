@@ -15,5 +15,14 @@
     "url": "https://github.com/thomegabi/ABEX_IV/issues"
   },
   "homepage": "https://github.com/thomegabi/ABEX_IV#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "tsup": "^8.1.0",
+    "tsx": "^4.15.4",
+    "typescript": "^5.4.5"
+  }
 }
