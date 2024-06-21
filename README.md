@@ -48,3 +48,12 @@
 | Per_Codigo    | int  | Código da pergunta         |
 | Usu_Codigo    | int  | Código do usuário          |
 | For_Codigo    | int  | Código do formulário       |
+
+### T_Resposta_Pontuacao
+| Coluna           | Tipo | Descrição                  |
+|------------------|------|----------------------------|
+| ReP_Codigo (PK)  | int  | Código da pontuação        |
+| ReU_Codigo (FK)  | int  | Código da resposta do usuário |
+| Pontuacao        | int  | Pontuação atribuída        |
+
+
