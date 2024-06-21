@@ -1,6 +1,10 @@
 {
   "watch": [
-    "src"
+    "src",
+    "models",
+    "controllers",
+    "routes",
+    "public"
   ],
   "ext": "ts",
   "exec": "ts-node ./src/app.ts"
