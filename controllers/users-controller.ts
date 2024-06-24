@@ -87,3 +87,11 @@ export const result = (req: Request, res: Response, next: NextFunction): void =>
   console.log(`Email: ${email}, Password: ${password}`);
   res.send('Usuário cadastrado! Obrigado!');
 };
+
+export const showHomePage = (req: Request, res: Response, next: NextFunction): void => {
+  res.sendFile(path.join(__dirname, '../public', 'index.html'), (err) => {
+    if (err) {
+      next(new HttpError('File not found', 404));
+    }
+  });
+};
