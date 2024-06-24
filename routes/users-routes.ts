@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', usersController.showHomePage);
 router.get('/users', usersController.getUsers);
 router.get('/signIn', usersController.signIn);
-router.get('/signUp', usersController.signUpForm);
+router.get('/signUp', usersController.signUpUser);
 
 router.post('/signup', [
   check('email').not().isEmpty().isEmail().normalizeEmail(),
@@ -18,10 +18,5 @@ router.post('/login', [
   check('email').not().isEmpty().isEmail().normalizeEmail(),
   check('password').isLength({ min: 6 })
 ], usersController.login);
-
-router.post('/result', [
-  check('email').not().isEmpty().isEmail().normalizeEmail(),
-  check('password').isLength({ min: 6 })
-], usersController.result);
 
 export default router;

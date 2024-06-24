@@ -1,7 +1,8 @@
 import express, { NextFunction, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import path from 'path';
-import usersRoutes from '../routes/users-routes'
+import usersRoutes from '../routes/users-routes';
+import formsRoutes from '../routes/form-routes';
 import HttpError from 'models/http-error';
 
 const app = express();
@@ -12,7 +13,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.use('/home', usersRoutes);
+app.use('/home', usersRoutes, formsRoutes);
 
 app.use((error: HttpError, req: Request, res: Response, next: NextFunction) => {
   if (res.headersSent) {
