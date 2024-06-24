@@ -12,7 +12,6 @@
 | Coluna        | Tipo    | Descrição         |
 |---------------|---------|-------------------|
 | Usu_Codigo (PK)| int    | Código do usuário |
-| Usu_Nome      | text    | Nome do usuário   |
 | Usu_Email     | text    | E-mail do usuário |
 | Usu_Login     | text    | Login do usuário  |
 | Usu_Senha     | text    | Senha do usuário  |
