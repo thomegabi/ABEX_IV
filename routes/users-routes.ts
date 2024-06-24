@@ -4,6 +4,7 @@ import * as usersController from '../controllers/users-controller';
 
 const router = express.Router();
 
+router.get('/users', usersController.getUsers);
 router.get('/signIn', usersController.signIn);
 router.get('/signUp', usersController.signUpForm);
 
