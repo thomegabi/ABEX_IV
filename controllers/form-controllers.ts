@@ -19,9 +19,18 @@ const FORM_TEST:  Form[] = [
 }
 ];
 
-export const getForms = (req: Request, res: Response,  next: NextFunction): void => {
-  const formsString = FORM_TEST.map(user => `ID: ${user.id}, Name: ${user.name}, Description: ${user.description}`).join('<br>');
-  res.send(`<html><body>${formsString}</body></html>`);
+export const getForms = (req: Request, res: Response, next: NextFunction): void => {
+  const formsString = FORM_TEST.map(form => `ID: ${form.id}, Name: ${form.name}, Description: ${form.description}`).join('<br>');
+  const htmlContent = `
+    <html>
+      <body>
+        ${formsString}
+        <br><br>
+        <button onclick="window.location.href='/home';">Voltar ao Início</button>
+      </body>
+    </html>
+  `;
+  res.send(htmlContent);
 };
 
 export const createForm = (req: Request, res: Response, next: NextFunction): void => {
@@ -32,6 +41,7 @@ export const createForm = (req: Request, res: Response, next: NextFunction): voi
   });
 }
 
+// Métodos setters
 export const fillForm = (req: Request, res: Response, next: NextFunction): void => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -49,5 +59,15 @@ export const fillForm = (req: Request, res: Response, next: NextFunction): void 
 
   FORM_TEST.push(createdForm);
   console.log(`Name: ${name}, Description: ${description}`);
-  res.status(201).send('Formulário cadastrado com sucesso!');
+  const htmlContent = `
+    <html>
+      <body>
+        Formulário ${name}: ${description}<br><br> Cadastrádo com sucesso!
+        <br><br>
+        <button onclick="window.location.href='/home/fillform/questions';">Next</button>
+        <button onclick="window.location.href='/home';">Return</button>
+      </body>
+    </html>
+  `;
+  res.status(201).send(htmlContent);
 }

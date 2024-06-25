@@ -4,7 +4,7 @@ import * as usersController from '../controllers/users-controller';
 
 const router = express.Router();
 
-router.get('/', usersController.showHomePage);
+router.get('/', usersController.showSignUpPage);
 router.get('/users', usersController.getUsers);
 router.get('/signIn', usersController.signIn);
 router.get('/signUp', usersController.signUpUser);
