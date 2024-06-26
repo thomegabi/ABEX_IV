@@ -3,6 +3,7 @@ import { validationResult } from "express-validator";
 import HttpError from "../models/http-error";
 import { v4 as uuidv4 } from 'uuid';
 import path from "path";
+import { createQuestion } from "./questions-controllers";
 
 
 interface Form{
@@ -24,7 +25,7 @@ export const getForms = (req: Request, res: Response, next: NextFunction): void 
   const htmlContent = `
     <html>
       <body>
-        ${formsString}
+        ${formsString}<button onclick="window.location.href='/forms/questions';">Voltar ao Início</button>
         <br><br>
         <button onclick="window.location.href='/home';">Voltar ao Início</button>
       </body>
@@ -57,6 +58,8 @@ export const fillForm = (req: Request, res: Response, next: NextFunction): void 
     description
   };
 
+  //createQuestion(createdForm.id, req, res, next);
+
   FORM_TEST.push(createdForm);
   console.log(`Name: ${name}, Description: ${description}`);
   const htmlContent = `
@@ -64,7 +67,7 @@ export const fillForm = (req: Request, res: Response, next: NextFunction): void 
       <body>
         Formulário ${name}: ${description}<br><br> Cadastrádo com sucesso!
         <br><br>
-        <button onclick="window.location.href='/home/fillform/questions';">Next</button>
+        <button onclick="window.location.href='/home/forms/creation';">Create Questions</button>
         <button onclick="window.location.href='/home';">Return</button>
       </body>
     </html>

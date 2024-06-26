@@ -2,6 +2,7 @@ import { NextFunction, Response, Request } from "express";
 import { validationResult } from "express-validator";
 import HttpError from "../models/http-error";
 import { randomUUID } from "crypto";
+import path from "path";
 
 
 interface Pergunta {
@@ -9,6 +10,7 @@ interface Pergunta {
   description: string;
   type: string;
   mandatory: boolean;
+  //form_id: string;
 }
 
 let PERGUNTAS: Pergunta[] = [
@@ -17,12 +19,14 @@ let PERGUNTAS: Pergunta[] = [
     description: 'Qual é o seu nome?',
     type: 'descritiva',
     mandatory: true,
+   // form_id: 'f1'
   },
   {
     id: 'q2',
     description: 'Qual é a sua idade?',
     type: 'descritiva',
     mandatory: true,
+   // form_id: 'f1'
   },
 ];
 
@@ -39,8 +43,16 @@ export const getQuestions = (req: Request, res: Response, next: NextFunction): v
   `;
   res.send(htmlContent);
 };
+
+export const setQuestions = (req: Request, res: Response, next: NextFunction): void => {
+  res.sendFile(path.join(__dirname, '../public', 'question-creation.html'), (err) => {
+    if (err) {
+      next(new HttpError('File not found', 404));
+    }
+  });
+}
  
-export const createQuestion = (req: Request, res: Response, next: NextFunction): void => {
+export const createQuestion = (/*form_idt: string, */req: Request, res: Response, next: NextFunction): void => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     console.log(errors.array());
@@ -53,7 +65,8 @@ export const createQuestion = (req: Request, res: Response, next: NextFunction):
     id: randomUUID(),
     description,
     type,
-    mandatory,
+    mandatory: true,
+    //form_id: form_idt
   };
 
   PERGUNTAS.push(newQuestion);
