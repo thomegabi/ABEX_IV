@@ -24,12 +24,11 @@ const TEST_USERS: User[] = [
 
 // Métodos getters
 export const getUsers = (req: Request, res: Response, next: NextFunction): void => {
-  const usersString = TEST_USERS.map(user => `ID: ${user.id}, Email: ${user.email}, Password: ${user.password}`).join('<br>');
+  const usersString = TEST_USERS.map(user => `ID: ${user.id}, Email: ${user.email}, Password: ${user.password}, Fone: ${user.fone}`).join('<br>');
   const htmlContent = `
     <html>
       <body>
-        ${usersString}
-        <br><br>
+        ${usersString}<br><br>
         <button onclick="window.location.href='/home';">Voltar ao Início</button>
       </body>
     </html>
