@@ -4,7 +4,8 @@
     "models",
     "controllers",
     "routes",
-    "public"
+    "public",
+    "views"
   ],
   "ext": "ts",
   "exec": "ts-node ./src/app.ts"
