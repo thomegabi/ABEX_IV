@@ -7,8 +7,8 @@ import homeRoutes from './routes/home-route';
 import questionsRoutes from './routes/questions-routes';
 import HttpError from './models/http-error';
 
-const app = express();
-const port = 3000;
+export const app = express();
+
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
@@ -30,6 +30,3 @@ app.use((error: HttpError, req: Request, res: Response, next: NextFunction) => {
   res.status(error.code || 500).json({ message: error.message || "An unknown error occurred!" });
 });
 
-app.listen(port, () => {
-  console.log(`Servidor rodando em http://localhost:${port}`);
-});

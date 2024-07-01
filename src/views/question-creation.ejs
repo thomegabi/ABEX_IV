@@ -6,7 +6,7 @@
     <title>Question Creation</title>
   </head>
   <body>
-    <h1>Creating Question for formId: <%= formId %></h1>
+    <h1>Question Creation for form: <%= formId %></h1>
     <form action="/home/forms/questionUpload" method="POST">
       <input type="hidden" name="formId" value="<%= formId %>" />
       <label for="description">Question:</label>
@@ -14,6 +14,9 @@
       <br />
       <label for="type">Tipo:</label>
       <input type="text" id="type" name="type" required />
+      <br />
+      <label for="mandatory">Mandatory:</label>
+      <input type="checkbox" id="mandatory" name="mandatory" />
       <br />
       <button type="submit">Submit</button>
     </form>

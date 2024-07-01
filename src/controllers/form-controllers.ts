@@ -24,7 +24,7 @@ export const getForms = (req: Request, res: Response, next: NextFunction): void 
   const htmlContent = `
     <html>
       <body>
-        ${formsString}<button onclick="window.location.href='/forms/questions';">Voltar ao Início</button>
+        ${formsString}<button onclick="window.location.href='/home/forms/questions';">Perguntas</button>
         <br><br>
         <button onclick="window.location.href='/home';">Voltar ao Início</button>
       </body>
@@ -61,5 +61,4 @@ export const fillForm = (req: Request, res: Response, next: NextFunction): void 
   console.log(`Name: ${name}, Description: ${description}`);
 
   res.redirect(`/home/forms/creation?formId=${createdForm.id}`);
-  console.log('log teste');
 };
